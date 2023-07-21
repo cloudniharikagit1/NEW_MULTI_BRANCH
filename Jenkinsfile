@@ -2,6 +2,7 @@ pipeline {
     agent any 
     environment {
         DEPLOY_TO = "SIVA"
+
     }
     stages {
         stage ("deploy") {
@@ -20,6 +21,14 @@ pipeline {
             steps {
                 echo " excute all"
             }
+        stage ('prod'){
+            when {
+                buildingTag()
+            }
+            steps{
+                echo " deploying to prod"
+            }
+        }
         }
     }
 
