@@ -2,7 +2,6 @@ pipeline {
     agent any 
     environment {
         DEPLOY_TO = "SIVA"
-
     }
     stages {
         stage ("deploy") {
