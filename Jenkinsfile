@@ -2,12 +2,13 @@ pipeline {
     agent any 
     environment {
         DEPLOY_TO = "SIVA"
+
     }
     stages {
         stage ("deploy") {
             when {
-              allOf {
-                branch 'production'
+              anyOf {
+                BRANCH_NAME ==~ /(production|stagging)/
                 environment name: 'DEPLOY_TO', value: 'SIVA'
               }
             }
